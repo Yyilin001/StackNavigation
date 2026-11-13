@@ -6,7 +6,7 @@ StackNavigation 是我结合生产项目中的导航实践，以及排查 SwiftU
 
 [English](../README.md) · [兼容性与验证](Compatibility.md)
 
-当前为 **API 预览阶段，尚未发布版本**，采用 MIT 许可证，版权署名为 Yyilin。仓库已重新建立提交历史，旧标签和 Release 已撤下。当前功能见[更新记录](../CHANGELOG.md)。
+当前版本为 **0.2.0（API 预览版）**，采用 MIT 许可证，版权署名为 Yyilin。版本内容见[更新记录](../CHANGELOG.md)。
 
 ## 主要处理的问题
 
@@ -20,13 +20,13 @@ StackNavigation 是我结合生产项目中的导航实践，以及排查 SwiftU
 
 ## 安装
 
-本地开发可在 Xcode 中使用 Add Local Package，选择仓库根目录。远程集成时添加[仓库地址](https://github.com/Yyilin001/StackNavigation)，选择 `main` 分支，或使用以下依赖声明：
+本地开发可在 Xcode 中使用 Add Local Package，选择仓库根目录。远程集成时添加[仓库地址](https://github.com/Yyilin001/StackNavigation)，选择版本 `0.2.0`，或使用以下依赖声明：
 
 ```swift
-.package(url: "https://github.com/Yyilin001/StackNavigation.git", branch: "main")
+.package(url: "https://github.com/Yyilin001/StackNavigation.git", .upToNextMinor(from: "0.2.0"))
 ```
 
-`main` 会继续变化；需要可复现集成时，通过依赖的 `revision:` 参数固定已审查的提交。目前没有可用的版本标签。
+`0.x` 为预览阶段，上述约束只接受 `0.2.x` 补丁版本，不会自动升级到可能包含破坏性变更的 `0.3.0`。
 
 ## 快速使用
 
@@ -66,6 +66,8 @@ struct DetailPage: View {
             Button("返回") { navigator.pop() }
             Button("返回根页面") { navigator.popToRoot() }
         }
+        .onNavigationEnter { print("详情注册在栈中") }
+        .onNavigationExit { print("详情出栈") }
         .onNavigationActivate { print("详情激活") }
         .onNavigationDeactivate { print("详情失活") }
     }

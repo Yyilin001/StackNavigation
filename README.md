@@ -6,7 +6,7 @@ I built StackNavigation from my navigation work in production apps and the pitfa
 
 [中文说明](Documentation/README.zh-CN.md) · [Compatibility](Documentation/Compatibility.md) · [Testing](Documentation/Testing.md)
 
-**Status: API preview, unreleased.** Licensed under MIT. The repository starts with a fresh history; the previous tag and release have been retired. See the [changelog](CHANGELOG.md) for the current scope.
+**Version: 0.2.0 — API preview.** Licensed under MIT. See the [changelog](CHANGELOG.md) for release details.
 
 ## Problems it addresses
 
@@ -22,13 +22,13 @@ Activation means **being the logical stack top**. It does not mean that an anima
 
 For local development, use Xcode's **Add Local Package** and select this repository root.
 
-Add [this repository](https://github.com/Yyilin001/StackNavigation) in Xcode's Package Dependencies and select branch `main`, or use the following manifest entry:
+Add [this repository](https://github.com/Yyilin001/StackNavigation) in Xcode's Package Dependencies and select version `0.2.0`, or use the following manifest entry:
 
 ```swift
-.package(url: "https://github.com/Yyilin001/StackNavigation.git", branch: "main")
+.package(url: "https://github.com/Yyilin001/StackNavigation.git", .upToNextMinor(from: "0.2.0"))
 ```
 
-The `main` branch can change. Pin a reviewed commit using the dependency’s `revision:` argument when reproducible integration is required; no version tag is currently available.
+During the `0.x` preview period, this requirement accepts `0.2.x` patches and excludes `0.3.0`, which may contain breaking changes.
 
 Link the `StackNavigation` product. The package declares Swift tools 6.0 and iOS 17; see the [compatibility table](Documentation/Compatibility.md) for tested combinations.
 
@@ -70,6 +70,8 @@ struct DetailPage: View {
             Button("Back") { navigator.pop() }
             Button("Back to root") { navigator.popToRoot() }
         }
+        .onNavigationEnter { print("Detail registered in stack") }
+        .onNavigationExit { print("Detail removed from stack") }
         .onNavigationActivate { print("Detail active") }
         .onNavigationDeactivate { print("Detail inactive") }
     }

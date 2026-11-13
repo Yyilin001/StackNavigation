@@ -1,12 +1,13 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-11-13
+
+Published from the new repository history. The retired `v0.1.0` tag is not reused.
 
 - Independent `onNavigationEnter` and `onNavigationExit` page modifiers, including root registration and covered-page removal.
 - Initial membership before activation, top-down removal before returning-page activation, and FIFO navigation from both callbacks.
 - Explicit registration-scoped semantics for Host replacement, cancellation and pages removed before mounting.
 - Membership regression tests and simulator-hosted SwiftUI tests of the public modifiers.
-
 - Typed navigation commands with stable page-instance IDs.
 - Root and destination logical activation/deactivation modifiers.
 - FIFO callback reentry and cancellable navigation-change subscriptions.
