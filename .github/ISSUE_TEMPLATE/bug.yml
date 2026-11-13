@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a reproducible navigation or lifecycle issue
+title: '[Bug] '
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Library version/commit, Xcode, Swift, iOS, simulator or device
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the route, command sequence and modifier placement. Remove private data.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+      description: Distinguish logical path/lifecycle from visual appearance or animation completion.
+    validations:
+      required: true

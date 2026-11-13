@@ -1,0 +1,10 @@
+name: Feature request
+description: Propose a focused navigation capability
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and desired behavior
+      description: Explain the use case, proposed API and how it fits the current navigation constraints.
+    validations:
+      required: true
